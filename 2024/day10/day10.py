@@ -36,19 +36,15 @@
 
 # def track_trails(current, trail_data, full_trails):
 #     if trail_data[current[0]][current[1]].isdigit() and int(trail_data[current[0]][current[1]]) == 9:
-#         print('YAY', full_trails, current, trail_data[current[0]][current[1]])
 #         if current not in full_trails:
 #             full_trails.append(current)
 #         return full_trails
 #     else:
-#         print(current)
 #         possible_steps = [(current[0], current[1]-1), (current[0], current[1]+1), (current[0]-1,current[1]), (current[0]+1,current[1])]
-#         print(possible_steps)
 #         for s in possible_steps:
 #             if s[0] < 0 or s[1] < 0 or s[0] >= len(trail_data[0]) or s[1] >= len(trail_data[0]) or not trail_data[s[0]][s[1]].isdigit():
 #                 continue
 #             elif int(trail_data[s[0]][s[1]]) == int(trail_data[current[0]][current[1]]) + 1:
-#                 print(s)
 #                 full_trails = track_trails(s, trail_data, full_trails)
 #             else:
 #                 continue
@@ -95,18 +91,14 @@ def read_trails(filename):
 
 def track_trails(current, trail_data, rating):
     if trail_data[current[0]][current[1]].isdigit() and int(trail_data[current[0]][current[1]]) == 9:
-        print('YAY', rating, current, trail_data[current[0]][current[1]])
         return rating + 1
     else:
-        print(current)
         possible_steps = [(current[0], current[1]-1), (current[0], current[1]+1), (current[0]-1,current[1]), (current[0]+1,current[1])]
-        print(possible_steps)
         total_rating = 0
         for s in possible_steps:
             if s[0] < 0 or s[1] < 0 or s[0] >= len(trail_data[0]) or s[1] >= len(trail_data[0]) or not trail_data[s[0]][s[1]].isdigit():
                 continue
             elif int(trail_data[s[0]][s[1]]) == int(trail_data[current[0]][current[1]]) + 1:
-                print(s)
                 total_rating += track_trails(s, trail_data, rating)
             else:
                 continue
